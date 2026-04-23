@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cécile Puthois Tanet — Psychologue Clinicienne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0d7c6a;
+    --teal-light: #e8f5f2;
+    --teal-mid: #1a9b85;
+    --teal-dark: #085c4e;
+    --cream: #faf8f4;
+    --cream-dark: #f0ece3;
+    --ink: #1a1a18;
+    --ink-mid: #3d3d38;
+    --ink-light: #7a7a72;
+    --warm-white: #fffef9;
+    --accent: #c4885a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,254,249,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(13,124,106,0.12);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--teal-dark);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink-mid);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    background: var(--teal) !important;
+    color: white !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.8rem !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--teal-dark) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 22px; height: 1.5px; background: var(--ink-mid); display: block; }
+  .mobile-menu { display: none; }
+
+  .hero {
+    min-height: 75vh;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    margin-top: 64px;
+    background: var(--cream);
+    align-items: stretch;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 4rem 4rem 6rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--ink); margin-bottom: 1.25rem;
+  }
+
+  .hero-title em { font-style: italic; color: var(--teal); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; color: var(--ink-mid);
+    margin-bottom: 2rem; font-style: italic;
+  }
+
+  .hero-desc {
+    font-size: 1rem; color: var(--ink-light);
+    max-width: 420px; margin-bottom: 2.5rem; line-height: 1.8;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--teal); color: white;
+    padding: 0.85rem 2rem; border-radius: 100px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.03em; transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(13,124,106,0.2); }
+
+  .btn-outline {
+    background: transparent; color: var(--teal);
+    padding: 0.85rem 2rem; border-radius: 100px;
+    border: 1.5px solid var(--teal); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; transition: all 0.25s;
+  }
+
+  .btn-outline:hover { background: var(--teal-light); }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: linear-gradient(145deg, #085c4e 0%, #0d7c6a 50%, #1a9b85 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1.25rem; padding: 3rem 2rem; text-align: center;
+    color: white;
+    border-radius: 16px;
+    margin: 2rem 2rem 2rem 0;
+  }
+
+  .hero-photo {
+    width: 220px; height: 220px; border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.3);
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .hero-photo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: 0.05em; }
+  .hero-photo-role { font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+
+  .hero-tag {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-size: 0.75rem; padding: 0.35rem 0.85rem;
+    border-radius: 100px; letter-spacing: 0.04em;
+  }
+
+  .hero-location { font-size: 0.85rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 0.4rem; margin-top: 0.5rem; }
+
+  section { padding: 6rem; }
+
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--teal); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400;
+    line-height: 1.2; color: var(--ink); margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  .section-intro { font-size: 1.05rem; color: var(--ink-light); line-height: 1.8; }
+
+  /* APROPOS */
+  #apropos {
+    background: var(--warm-white);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+
+  .apropos-text p { font-size: 1rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.25rem; text-align: justify; hyphens: auto; }
+  .apropos-text p:last-child { margin-bottom: 0; }
+
+  .apropos-quote {
+    border-left: 3px solid var(--teal); padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0; background: var(--teal-light); border-radius: 0 8px 8px 0;
+  }
+
+  .apropos-quote p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+    font-style: italic; color: var(--teal-dark); margin: 0 !important; line-height: 1.5;
+  }
+
+  .apropos-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .apropos-card {
+    background: var(--cream); border-radius: 12px; padding: 1.5rem;
+    border: 1px solid rgba(13,124,106,0.1); display: flex; gap: 1rem; align-items: flex-start;
+  }
+
+  .apropos-icon {
+    width: 40px; height: 40px; min-width: 40px; background: var(--teal-light);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+
+  .apropos-card h4 { font-weight: 500; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.3rem; }
+  .apropos-card p { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; }
+
+  /* SERVICES */
+  #services { background: var(--cream); }
+
+  .services-header { width: 100%; margin-bottom: 3.5rem; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+  .service-card {
+    background: var(--warm-white); border-radius: 16px; padding: 2rem;
+    border: 1px solid rgba(13,124,106,0.1); transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+    color: rgba(13,124,106,0.18); line-height: 1; margin-bottom: 0.75rem; transition: color 0.3s;
+  }
+
+  .service-card:hover .service-num { color: rgba(13,124,106,0.35); }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+    font-weight: 400; color: var(--ink); margin-bottom: 0.75rem;
+  }
+
+  .service-card p { font-size: 0.9rem; color: var(--ink-light); line-height: 1.75; margin-bottom: 1.25rem; }
+
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .service-tag {
+    background: var(--teal-light); color: var(--teal-dark); font-size: 0.72rem;
+    font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 100px; letter-spacing: 0.03em;
+  }
+
+  /* ADDICTO */
+  #addicto {
+    background: var(--teal-dark); color: white;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+
+  #addicto .section-label { color: rgba(255,255,255,0.6); }
+  #addicto .section-label::before { background: rgba(255,255,255,0.4); }
+  #addicto .section-title { color: white; }
+  #addicto .section-title em { color: #5dcaa5; }
+  #addicto .section-intro { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+
+  .addicto-content p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.85; margin-bottom: 1.2rem; }
+
+  .addicto-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: #5dcaa5; font-size: 0.9rem; text-decoration: none;
+    border-bottom: 1px solid rgba(93,202,165,0.3); padding-bottom: 2px;
+    transition: all 0.2s; margin-top: 1rem;
+  }
+
+  .addicto-link:hover { color: #9fe1cb; }
+
+  .addicto-right { display: flex; flex-direction: column; gap: 1rem; }
+
+  .addicto-stat {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 1.5rem;
+  }
+
+  .addicto-stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300;
+    color: #5dcaa5; line-height: 1; margin-bottom: 0.4rem;
+  }
+
+  .addicto-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  .quoi-box {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .quoi-badge {
+    background: #5dcaa5; color: #04342c; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem;
+    border-radius: 4px; white-space: nowrap; margin-top: 2px;
+  }
+
+  .quoi-box p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0 !important; }
+  .quoi-box a { color: #5dcaa5; text-decoration: none; }
+
+  /* FORMATIONS */
+  #formations { background: var(--warm-white); }
+
+  .formations-header { width: 100%; margin-bottom: 3.5rem; }
+
+  .formations-grid { display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; }
+
+  .formation-sidebar h4 { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.2rem; }
+
+  .public-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+
+  .public-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--ink-mid); }
+
+  .public-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+  .formats-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .format-pill {
+    background: var(--cream); border: 1px solid rgba(13,124,106,0.15);
+    color: var(--ink-mid); font-size: 0.78rem; padding: 0.3rem 0.85rem; border-radius: 100px;
+  }
+
+  .formation-main { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .formation-item {
+    background: var(--cream); border-radius: 12px; padding: 1.5rem;
+    border: 1px solid rgba(13,124,106,0.08); display: flex; gap: 1.25rem; align-items: flex-start;
+    transition: all 0.25s;
+  }
+
+  .formation-item:hover { border-color: rgba(13,124,106,0.25); background: var(--warm-white); }
+
+  .formation-icon {
+    width: 44px; height: 44px; min-width: 44px; background: var(--teal-light);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+
+  .formation-item h4 { font-weight: 500; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.4rem; }
+  .formation-item p { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 0.6rem; }
+
+  .irema-link { font-size: 0.8rem; color: var(--teal); text-decoration: none; font-weight: 500; }
+  .irema-link:hover { text-decoration: underline; }
+
+  /* PARCOURS */
+  #parcours { background: var(--cream); }
+
+  .parcours-header { margin-bottom: 3.5rem; }
+
+  .timeline { position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, var(--teal) 0%, rgba(13,124,106,0.1) 100%);
+  }
+
+  .timeline-item { position: relative; padding-left: 2.5rem; padding-bottom: 2.5rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute; left: -2.55rem; width: 10px; height: 10px;
+    border-radius: 50%; background: var(--teal); top: 6px;
+    border: 2px solid var(--cream); box-shadow: 0 0 0 2px var(--teal);
+  }
+
+  .timeline-date { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase; margin-bottom: 0.35rem; }
+  .timeline-title { font-weight: 500; font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem; }
+  .timeline-org { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 0.5rem; }
+  .timeline-org a { color: var(--teal); text-decoration: none; }
+  .timeline-org a:hover { text-decoration: underline; }
+  .timeline-desc { font-size: 0.88rem; color: var(--ink-light); line-height: 1.65; max-width: 620px; }
+
+  .formation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0; }
+
+  .formation-badge {
+    background: var(--warm-white); border: 1px solid rgba(13,124,106,0.1);
+    border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start;
+  }
+
+  .formation-year {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    color: var(--teal); font-weight: 500; min-width: 55px; line-height: 1.3;
+  }
+
+  .formation-badge-text { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.5; }
+  .formation-badge-place { font-size: 0.78rem; color: var(--ink-light); margin-top: 0.2rem; }
+
+  /* CONFÉRENCES */
+  #conferences { background: var(--warm-white); }
+
+  .conf-header { margin-bottom: 3.5rem; }
+
+  .conf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+
+  .conf-card {
+    border: 1px solid rgba(13,124,106,0.12); border-radius: 14px; padding: 2rem;
+    transition: all 0.25s; background: var(--cream);
+  }
+
+  .conf-card:hover { border-color: var(--teal); background: var(--warm-white); }
+
+  .conf-emoji { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+
+  .conf-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+    font-weight: 400; color: var(--ink); margin-bottom: 0.6rem;
+  }
+
+  .conf-card p { font-size: 0.85rem; color: var(--ink-light); line-height: 1.7; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+
+  .contact-info-block h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 400; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.2;
+  }
+
+  .contact-info-block h2 em { font-style: italic; color: var(--teal); }
+
+  .contact-info-block p { font-size: 1rem; color: var(--ink-light); line-height: 1.8; margin-bottom: 2rem; }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.25rem; background: var(--warm-white);
+    border-radius: 10px; border: 1px solid rgba(13,124,106,0.08);
+    text-decoration: none; transition: all 0.2s;
+  }
+
+  .contact-item:hover { border-color: var(--teal); background: var(--teal-light); }
+
+  .contact-item-icon {
+    width: 36px; height: 36px; min-width: 36px; background: var(--teal-light);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+
+  .contact-item-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.15rem; }
+  .contact-item-value { font-size: 0.9rem; color: var(--ink-mid); }
+
+  .social-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+
+  .social-link {
+    width: 44px; height: 44px; border-radius: 10px; background: var(--warm-white);
+    border: 1px solid rgba(13,124,106,0.12); display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all 0.2s; font-size: 0.85rem; color: var(--ink-mid);
+  }
+
+  .social-link:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+  .contact-form-area {
+    background: var(--warm-white); border-radius: 16px; padding: 2.5rem;
+    border: 1px solid rgba(13,124,106,0.1);
+  }
+
+  .contact-form-area h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+    font-weight: 400; color: var(--ink); margin-bottom: 1.75rem;
+  }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-group label {
+    display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-mid); margin-bottom: 0.5rem;
+  }
+
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(13,124,106,0.2);
+    border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--ink); background: var(--cream); transition: border-color 0.2s; outline: none;
+  }
+
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); background: white; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.6);
+    padding: 2.5rem 6rem; display: flex;
+    justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; }
+  footer a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: white; font-weight: 400; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-copy { font-size: 0.8rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .hero-left > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.15s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.45s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu.open {
+      display: flex; flex-direction: column; position: fixed;
+      top: 64px; left: 0; right: 0; background: var(--warm-white);
+      padding: 1.25rem 1.5rem; gap: 0; border-bottom: 1px solid rgba(13,124,106,0.12); z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .mobile-menu a {
+      font-size: 0.95rem; color: var(--ink-mid); text-decoration: none;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--cream-dark);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mobile-menu a:last-child {
+      border-bottom: none; color: var(--teal); font-weight: 500;
+      margin-top: 0.5rem; padding-top: 1rem;
+    }
+
+    /* HERO mobile — colonne unique, partie droite compacte en bas */
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      margin-top: 64px;
+    }
+    .hero-left { padding: 2.5rem 1.5rem 2rem; }
+    .hero-eyebrow { font-size: 0.7rem; margin-bottom: 1rem; }
+    .hero-title { font-size: 2.6rem; }
+    .hero-subtitle { font-size: 1.1rem; margin-bottom: 1.25rem; }
+    .hero-desc { font-size: 0.9rem; margin-bottom: 1.75rem; max-width: 100%; }
+    .hero-actions { gap: 0.75rem; }
+    .btn-primary, .btn-outline { padding: 0.75rem 1.5rem; font-size: 0.85rem; }
+
+    /* Hero droit : centré verticalement compact */
+    .hero-right {
+      flex-direction: column;
+      padding: 1.75rem 1.5rem;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: auto;
+      margin: 0 1rem 1rem 1rem;
+      border-radius: 12px;
+    }
+    .hero-photo { width: 90px; height: 90px; min-width: 90px; flex-shrink: 0; }
+    .hero-photo-name { font-size: 1rem; }
+    .hero-photo-role { font-size: 0.68rem; letter-spacing: 0.08em; }
+    .hero-tags { justify-content: center; margin-top: 0.35rem; gap: 0.35rem; }
+    .hero-tag { font-size: 0.68rem; padding: 0.2rem 0.6rem; }
+    .hero-location { font-size: 0.75rem; margin-top: 0.2rem; justify-content: center; }
+
+    /* CTA contact mobile centré */
+    .formation-main > div:last-child { text-align: center; }
+    .formation-main > div:last-child a { display: inline-flex; }
+
+    /* Sections générales */
+    section { padding: 3rem 1.5rem; }
+    #apropos { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+    #services { padding: 3rem 1.5rem; }
+    #addicto { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    #formations { padding: 3rem 1.5rem; }
+    #conferences { padding: 3rem 1.5rem; }
+    #contact { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    #parcours { padding: 3rem 1.5rem; }
+    .formations-grid { grid-template-columns: 1fr; }
+    .formation-grid { grid-template-columns: 1fr; }
+    #parcours > div { grid-template-columns: 1fr !important; }
+
+    /* Services cards : 1 colonne */
+    .services-grid { grid-template-columns: 1fr; }
+    .conf-grid { grid-template-columns: 1fr; }
+
+    /* CTA banner vertical */
+    .cta-banner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
+    /* Addicto stats */
+    #addicto > .addicto-right > div:first-child { grid-template-columns: 1fr 1fr; }
+
+    /* Parcours sections */
+    .parcours-header { margin-bottom: 2rem; }
+
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .footer-links { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 2.2rem; }
+    .hero-right { padding: 1.25rem; gap: 0.6rem; }
+    .hero-photo { width: 70px; height: 70px; min-width: 70px; }
+    .hero-tags { display: none; }
+    .section-title { font-size: 1.8rem; }
+    .service-card { padding: 1.5rem; }
+    .apropos-card { padding: 1.1rem; }
+  }
+
+  .cta-banner {
+    margin-top: 2.5rem;
+    background: var(--teal-dark);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .cta-banner::after {
+    content: '';
+    position: absolute; bottom: -60px; right: 80px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .cta-banner-text p:first-child {
+    font-weight: 500; color: white; margin-bottom: 0.3rem; font-size: 1.05rem;
+  }
+
+  .cta-banner-text p:last-child {
+    font-size: 0.85rem; color: rgba(255,255,255,0.6);
+  }
+
+  .btn-cta-white {
+    background: white;
+    color: var(--teal-dark);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.03em; transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    white-space: nowrap; position: relative; z-index: 1;
+  }
+
+  .btn-cta-white:hover { background: var(--cream); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Cécile Puthois Tanet</a>
+  <ul class="nav-links">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#services">Consultations</a></li>
+    <li><a href="#formations">Formations</a></li>
+    <li><a href="#conferences">Conférences</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#apropos" onclick="toggleMenu()">À propos</a>
+  <a href="#services" onclick="toggleMenu()">Consultations</a>
+  <a href="#formations" onclick="toggleMenu()">Formations</a>
+  <a href="#conferences" onclick="toggleMenu()">Conférences</a>
+  <a href="#parcours" onclick="toggleMenu()">Parcours</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" style="color: var(--teal); font-weight: 500;">Prendre RDV sur Doctolib →</a>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Cécile Puthois Tanet — Psychologue clinicienne</div>
+    <h1 class="hero-title">Comprendre les addictions,<br><em>réparer les liens</em></h1>
+    <p class="hero-desc">Thérapeute familiale spécialisée en addictologie, j'accompagne adultes, adolescents, couples et familles dans un espace d'écoute bienveillant — en cabinet à Lagny-sur-Marne ou en visio.</p>
+    <div class="hero-actions">
+      <a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" class="btn-primary">Prendre rendez-vous →</a>
+      <a href="#apropos" class="btn-outline">En savoir plus</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="data:image/jpeg;base64,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" alt="Cécile Puthois Tanet" class="hero-photo">
+    <div>
+      <p class="hero-photo-name">Cécile Puthois Tanet</p>
+      <p class="hero-photo-role">Psychologue clinicienne · N°ADELI 779302745</p>
+    </div>
+    <div class="hero-tags">
+      <span class="hero-tag">Addictologie</span>
+      <span class="hero-tag">Thérapie familiale</span>
+      <span class="hero-tag">Thérapie de couple</span>
+      <span class="hero-tag">Formatrice</span>
+    </div>
+    <p class="hero-location">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Lagny-sur-Marne (77) · Visio disponible
+    </p>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="apropos-text">
+    <div class="section-label">À propos</div>
+    <h2 class="section-title">Un accompagnement <em>ancré dans l'humain</em></h2>
+    <div class="apropos-quote">
+      <p>« Mon objectif est de créer un espace sécurisant et bienveillant où chacun peut se sentir véritablement écouté et compris. »</p>
+    </div>
+    <p>Psychologue clinicienne depuis plus de 10 ans et thérapeute familiale, je vous accueille en cabinet à Lagny-sur-Marne pour vos demandes individuelles, en couple ou en famille — en toute discrétion.</p>
+    <p>Mon expertise en addictologie me permet d'accompagner les problématiques liées aux dépendances, avec ou sans produits, dans une approche globale qui tient compte de votre histoire et de votre environnement.</p>
+    <p>Formée à la thérapie familiale systémique, j'interviens également dans des espaces de formation professionnelle et de sensibilisation autour des addictions et des violences conjugales.</p>
+  </div>
+  <div class="apropos-right">
+    <div class="apropos-card">
+      <div class="apropos-icon">🎓</div>
+      <div>
+        <h4>Formation de pointe</h4>
+        <p>Master 2 en psychologie clinique, DU d'addictologie, formation en thérapie familiale systémique (IDES, Chartrette).</p>
+      </div>
+    </div>
+    <div class="apropos-card">
+      <div class="apropos-icon">🏛️</div>
+      <div>
+        <h4>Expérience institutionnelle</h4>
+        <p>Plus de 10 ans en milieux hospitaliers, CSAPA et structures médico-sociales. Coordinatrice de CSAPA pendant 8 ans à Aubervilliers.</p>
+      </div>
+    </div>
+    <div class="apropos-card">
+      <div class="apropos-icon">🔒</div>
+      <div>
+        <h4>Confidentialité absolue</h4>
+        <p>Secret professionnel, écoute sans jugement. Attestations de suivi disponibles pour les obligations de soins.</p>
+      </div>
+    </div>
+    <div class="apropos-card">
+      <div class="apropos-icon">💻</div>
+      <div>
+        <h4>Consultations en visio</h4>
+        <p>Séances individuelles disponibles à distance, pour s'adapter à votre vie et votre mobilité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="services-header">
+    <div class="section-label">Consultations</div>
+    <h2 class="section-title">Comment puis-je <em>vous accompagner ?</em></h2>
+    <p class="section-intro">J'accueille adultes, adolescents (dès 11 ans), couples et familles. Chaque suivi est adapté à votre rythme et à vos besoins.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>Consultations individuelles</h3>
+      <p>Accompagnement de problématiques personnelles : anxiété, dépression, addictions, difficultés relationnelles, travail de soi. Séances d'environ 45 minutes.</p>
+      <div class="service-tags">
+        <span class="service-tag">Adultes</span>
+        <span class="service-tag">Ados dès 11 ans</span>
+        <span class="service-tag">Visio possible</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Thérapie de couple</h3>
+      <p>Un espace pour améliorer la communication, traverser une crise, ou prendre des décisions importantes à deux. Séances d'environ 1h15.</p>
+      <div class="service-tags">
+        <span class="service-tag">Couples</span>
+        <span class="service-tag">Communication</span>
+        <span class="service-tag">Conflits</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Thérapie familiale</h3>
+      <p>Approche systémique pour aider les familles à surmonter les défis relationnels, renforcer les liens et trouver de nouveaux équilibres. Séances d'environ 1h15.</p>
+      <div class="service-tags">
+        <span class="service-tag">Famille</span>
+        <span class="service-tag">Approche systémique</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3>Attestations de suivi</h3>
+      <p>Pour les personnes ayant des obligations de soins (injonctions thérapeutiques, obligations judiciaires), je délivre des attestations de suivi thérapeutique.</p>
+      <div class="service-tags">
+        <span class="service-tag">Obligations de soins</span>
+        <span class="service-tag">Suivi judiciaire</span>
+      </div>
+    </div>
+  </div>
+  <div class="cta-banner">
+    <div class="cta-banner-text">
+      <p>Prêt·e à franchir le pas ?</p>
+      <p>Cabinet à Lagny-sur-Marne · Consultations en présentiel et en visio</p>
+    </div>
+    <a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" class="btn-cta-white">Réserver sur Doctolib →</a>
+  </div>
+</section>
+
+<section id="addicto">
+  <div class="addicto-content">
+    <div class="section-label">Spécialité</div>
+    <h2 class="section-title">Experte en <em>addictologie</em></h2>
+    <p class="section-intro">Une approche globale des dépendances, sans jugement.</p>
+    <p>Mon expertise en addictologie s'est construite sur plus de 10 ans de pratique clinique, notamment en tant que coordinatrice du CSAPA d'Aubervilliers — un centre de soins, d'accompagnement et de prévention en addictologie.</p>
+    <p>J'accompagne les personnes concernées par toutes formes de dépendances — aux substances (alcool, cannabis, opiacés…) ou sans produit (jeux, écrans, comportements) — ainsi que leurs proches et leur entourage familial.</p>
+    <a href="https://www.youtube.com/@CSAPAAubervilliers" target="_blank" class="addicto-link">▶ Voir le projet "Quoi ma gueule !" — CSAPA Aubervilliers</a>
+  </div>
+  <div class="addicto-right">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div class="addicto-stat">
+        <div class="addicto-stat-num">+10</div>
+        <div class="addicto-stat-label">Années d'expérience clinique en addictologie</div>
+      </div>
+      <div class="addicto-stat">
+        <div class="addicto-stat-num">2 DU</div>
+        <div class="addicto-stat-label">Addictologie et psychologie interculturelle</div>
+      </div>
+    </div>
+    <div class="quoi-box">
+      <span class="quoi-badge">Projet</span>
+      <div>
+        <p><strong style="color: white;">"Quoi ma gueule !"</strong> — Une campagne de déstigmatisation des addictions créée et développée au sein du CSAPA d'Aubervilliers. Sauriez-vous dire qui est le professionnel et qui est le patient ? <a href="https://www.youtube.com/@CSAPAAubervilliers" target="_blank">Voir la vidéo →</a></p>
+      </div>
+    </div>
+    <div class="quoi-box">
+      <span class="quoi-badge" style="background: rgba(255,255,255,0.15); color: white;">Violences</span>
+      <div>
+        <p>Co-animatrice de stages de responsabilisation pour auteur·rices de violences conjugales — <a href="https://www.arile.fr" target="_blank">Association ARILE</a>, Meaux (77)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formations">
+  <div class="formations-header">
+    <div class="section-label">Formations</div>
+    <h2 class="section-title">Former et transmettre <em>mon expertise</em></h2>
+    <p class="section-intro">Formatrice à l'IREMA (Institut de Recherche et d'Enseignement en Addictologie) depuis 2020, j'interviens auprès de professionnels de santé, du social et de l'éducation.</p>
+  </div>
+  <div class="formations-grid">
+    <div class="formation-sidebar">
+      <h4>Public cible</h4>
+      <div class="public-list">
+        <div class="public-item"><div class="public-dot"></div>Professionnels de santé</div>
+        <div class="public-item"><div class="public-dot"></div>Travailleurs sociaux</div>
+        <div class="public-item"><div class="public-dot"></div>Équipes éducatives</div>
+        <div class="public-item"><div class="public-dot"></div>Institutions et associations</div>
+        <div class="public-item"><div class="public-dot"></div>Structures médico-sociales</div>
+      </div>
+      <h4>Formats disponibles</h4>
+      <div class="formats-list">
+        <span class="format-pill">Présentiel</span>
+        <span class="format-pill">Distanciel</span>
+        <span class="format-pill">Inter-établissements</span>
+        <span class="format-pill">Intra-établissement</span>
+      </div>
+    </div>
+    <div class="formation-main">
+      <div class="formation-item">
+        <div class="formation-icon">🧠</div>
+        <div>
+          <h4>Comprendre et accompagner les addictions</h4>
+          <p>Mécanismes des dépendances, approches thérapeutiques, posture professionnelle et travail avec les familles. Formation dispensée à l'IREMA depuis 2020.</p>
+          <a href="https://www.irema.fr" target="_blank" class="irema-link">Institut IREMA — Paris →</a>
+        </div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-icon">👨‍👩‍👧</div>
+        <div>
+          <h4>Approche systémique et thérapie familiale</h4>
+          <p>Introduction aux thérapies familiales systémiques, outils cliniques pour accompagner les familles en contexte d'addiction ou de crise.</p>
+        </div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-icon">⚖️</div>
+        <div>
+          <h4>Violences conjugales — accompagnement des auteur·rices</h4>
+          <p>Connaissance des dispositifs, posture professionnelle, enjeux de la responsabilisation et de la protection des victimes.</p>
+          <a href="https://www.arile.fr" target="_blank" class="irema-link">Association ARILE →</a>
+        </div>
+      </div>
+      <div style="padding: 1.75rem; background: var(--teal-dark); border-radius: 14px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.05);"></div>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem; line-height: 1.6; position: relative; z-index: 1;">Vous êtes un établissement ou une organisation souhaitant une formation sur mesure ?</p>
+        <a href="#contact" class="btn-cta-white" style="font-size: 0.83rem; padding: 0.65rem 1.4rem;">Me contacter →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conferences">
+  <div class="conf-header">
+    <div class="section-label">Conférences &amp; Interventions</div>
+    <h2 class="section-title">Intervenir, <em>sensibiliser, partager</em></h2>
+    <p class="section-intro">Disponible pour des interventions lors de séminaires, journées professionnelles ou conférences grand public, autour de mes domaines d'expertise.</p>
+  </div>
+  <div class="conf-grid">
+    <div class="conf-card">
+      <span class="conf-emoji">🎤</span>
+      <h3>Addictions &amp; représentations sociales</h3>
+      <p>Déconstruire les idées reçues sur les personnes dépendantes, comprendre les mécanismes de stigmatisation et promouvoir une approche humaniste des addictions.</p>
+    </div>
+    <div class="conf-card">
+      <span class="conf-emoji">🧩</span>
+      <h3>Familles et addictions</h3>
+      <p>Comment la dépendance d'un proche affecte tout le système familial. Ressources et postures pour les entourages.</p>
+    </div>
+    <div class="conf-card">
+      <span class="conf-emoji">💬</span>
+      <h3>Violences conjugales</h3>
+      <p>Enjeux cliniques et sociaux des violences au sein du couple, accompagnement des auteur·rices et protection des victimes.</p>
+    </div>
+    <div class="conf-card">
+      <span class="conf-emoji">🌐</span>
+      <h3>Psychologie interculturelle</h3>
+      <p>Prise en compte des appartenances culturelles dans la clinique psychologique et le travail social.</p>
+    </div>
+  </div>
+  <div style="margin-top: 2.5rem; text-align: center; padding: 2rem; background: var(--cream); border-radius: 12px;">
+    <p style="font-size: 1rem; color: var(--ink-mid); margin-bottom: 1rem;">Vous souhaitez m'inviter à intervenir lors d'un événement ?</p>
+    <a href="#contact" class="btn-primary">Prendre contact →</a>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="parcours-header">
+    <div class="section-label">Parcours</div>
+    <h2 class="section-title">Une trajectoire <em>engagée</em></h2>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <div>
+      <h3 style="font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem;">Expérience professionnelle</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Depuis 2024</div>
+          <div class="timeline-title">Activité libérale en cabinet</div>
+          <div class="timeline-org">Lagny-sur-Marne (77)</div>
+          <div class="timeline-desc">Consultations individuelles, en couple et en famille. Addictologie, thérapies systémiques.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Depuis 2024</div>
+          <div class="timeline-title">Stages de responsabilisation — violences conjugales</div>
+          <div class="timeline-org"><a href="https://www.arile.fr" target="_blank">Association ARILE</a> — Meaux (77)</div>
+          <div class="timeline-desc">Co-animation de stages pour auteur·rices de violences conjugales.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Depuis 2020</div>
+          <div class="timeline-title">Formatrice en addictologie</div>
+          <div class="timeline-org"><a href="https://www.irema.fr" target="_blank">IREMA</a> — Paris (75)</div>
+          <div class="timeline-desc">Formations à destination des professionnels de santé et du social.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2016 – 2024</div>
+          <div class="timeline-title">Coordinatrice du CSAPA</div>
+          <div class="timeline-org">Centre Municipal de Santé — Aubervilliers (93)</div>
+          <div class="timeline-desc">Entretiens cliniques, groupes de parole, ateliers à médiation artistique, réunions de synthèse. Patients en suivi ambulatoire. Création du projet "Quoi ma gueule !"</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015 – 2016</div>
+          <div class="timeline-title">Hôpital de jour adulte</div>
+          <div class="timeline-org">Maison de santé de Nogent-sur-Marne (94)</div>
+          <div class="timeline-desc">Co-animation d'ateliers de théâtre thérapeutique.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2013 – 2016</div>
+          <div class="timeline-title">Clinique psychiatrique adulte</div>
+          <div class="timeline-org"><a href="https://www.ker-yonnec.fr" target="_blank">Clinique Ker Yonnec</a> — Champigny-sur-Yonne (89)</div>
+          <div class="timeline-desc">Entretiens cliniques, groupes de parole autour de l'alcool, pôle gérontologie et hôpital de jour.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem;">Formation académique</h3>
+      <div class="formation-grid">
+        <div class="formation-badge">
+          <div class="formation-year">2021–24</div>
+          <div>
+            <div class="formation-badge-text">Formation en thérapie familiale systémique</div>
+            <div class="formation-badge-place">IDES, Chartrette</div>
+          </div>
+        </div>
+        <div class="formation-badge">
+          <div class="formation-year">2011–12</div>
+          <div>
+            <div class="formation-badge-text">Master 2 — Psychologie clinique et psychopathologie</div>
+            <div class="formation-badge-place">Université Paris XIII</div>
+          </div>
+        </div>
+        <div class="formation-badge">
+          <div class="formation-year">2011</div>
+          <div>
+            <div class="formation-badge-text">DU de psychologie interculturelle</div>
+            <div class="formation-badge-place">Université Bordeaux II</div>
+          </div>
+        </div>
+        <div class="formation-badge">
+          <div class="formation-year">2010–11</div>
+          <div>
+            <div class="formation-badge-text">DU d'addictologie</div>
+            <div class="formation-badge-place">Université Paris V</div>
+          </div>
+        </div>
+        <div class="formation-badge">
+          <div class="formation-year">2007–10</div>
+          <div>
+            <div class="formation-badge-text">Master 1 — Psychologie clinique</div>
+            <div class="formation-badge-place">Université Paris XIII</div>
+          </div>
+        </div>
+        <div class="formation-badge">
+          <div class="formation-year">2006–07</div>
+          <div>
+            <div class="formation-badge-text">Licence de psychologie</div>
+            <div class="formation-badge-place">Université Paris XIII</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; padding: 1.5rem; background: var(--warm-white); border-radius: 12px; border: 1px solid rgba(13,124,106,0.1);">
+        <h4 style="font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;">Engagement associatif</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div style="font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6;"><strong>Depuis 2024</strong> — Membre de la CPTS Liens Santé 77</div>
+          <div style="font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6;"><strong>2016 – 2024</strong> — Secrétaire de l'ObsAddicto93, réseau de structures d'addictologie en Seine-Saint-Denis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-info-block">
+    <div class="section-label">Contact</div>
+    <h2><em>Faisons<br>connaissance</em></h2>
+    <p>N'hésitez pas à me contacter pour toute question ou demande de formation. Pour un rendez-vous de consultation, Doctolib vous permet de choisir directement un créneau.</p>
+    <div class="contact-items">
+      <a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" class="contact-item">
+        <div class="contact-item-icon">📅</div>
+        <div>
+          <div class="contact-item-label">Prise de rendez-vous</div>
+          <div class="contact-item-value">Doctolib — Cécile Puthois Tanet</div>
+        </div>
+      </a>
+      <a href="tel:0663799131" class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div>
+          <div class="contact-item-label">Téléphone</div>
+          <div class="contact-item-value">06 63 79 91 31</div>
+        </div>
+      </a>
+      <a href="mailto:cecile9@gmail.com" class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">cecile9@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-item" style="cursor: default;">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Cabinet</div>
+          <div class="contact-item-value">201 rue Pasteur — 77450 Condé-Sainte-Libiaire</div>
+        </div>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/cecile.psycho.addicto" target="_blank" class="social-link" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.doctolib.fr/psychologue/lagny-sur-marne/cecile-puthois-tanet" target="_blank" class="social-link" title="Doctolib" style="font-weight: 700; font-size: 0.7rem; color: var(--teal);">Doc</a>
+    </div>
+  </div>
+
+  <div class="contact-form-area">
+    <h3>Envoyer un message</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" placeholder="Votre prénom">
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" placeholder="Votre nom">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="votre@email.com">
+    </div>
+    <div class="form-group">
+      <label for="sujet">Motif</label>
+      <select id="sujet">
+        <option value="">-- Sélectionnez un motif --</option>
+        <option>Consultation individuelle</option>
+        <option>Thérapie de couple ou familiale</option>
+        <option>Demande de formation</option>
+        <option>Invitation à une conférence</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Décrivez brièvement votre demande…"></textarea>
+    </div>
+    <button onclick="sendMessage()" class="btn-primary" style="width: 100%; justify-content: center;">Envoyer le message →</button>
+    <p style="font-size: 0.75rem; color: var(--ink-light); margin-top: 0.75rem; line-height: 1.6;">Données traitées dans le respect du RGPD et de la confidentialité. Réponse sous 48h.</p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">Cécile Puthois Tanet</div>
+    <div style="font-size: 0.78rem; margin-top: 0.25rem; color: rgba(255,255,255,0.4);">Psychologue clinicienne — N°ADELI 779302745</div>
+  </div>
+  <div class="footer-links">
+    <a href="#apropos">À propos</a>
+    <a href="#services">Consultations</a>
+    <a href="#formations">Formations</a>
+    <a href="#conferences">Conférences</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Mentions légales</a>
+  </div>
+  <div class="footer-copy" style="font-size: 0.8rem;">© 2025 — Tous droits réservés</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function sendMessage() {
+  const fields = ['prenom','nom','email','message'];
+  const empty = fields.some(f => !document.getElementById(f).value.trim());
+  if (empty) { alert('Merci de remplir tous les champs obligatoires.'); return; }
+  alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+  fields.forEach(f => document.getElementById(f).value = '');
+  document.getElementById('sujet').value = '';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
