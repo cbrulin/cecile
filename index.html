@@ -40,7 +40,7 @@
     background: rgba(255,254,249,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(13,124,106,0.12);
-    padding: 0 2rem;
+    padding: 0 4rem 0 6rem;
     height: 64px;
     display: flex; align-items: center; justify-content: space-between;
   }
@@ -529,8 +529,13 @@
   .hero-left > *:nth-child(4) { animation-delay: 0.45s; }
   .hero-left > *:nth-child(5) { animation-delay: 0.55s; }
 
+  @media (max-width: 1200px) and (min-width: 901px) {
+    nav { padding: 0 3rem 0 4rem; }
+    .hero-left { padding: 4rem 3rem 4rem 4rem; }
+  }
+
   @media (max-width: 900px) {
-    nav { padding: 0 1.25rem; }
+    nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .mobile-menu.open {
